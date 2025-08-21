@@ -1,16 +1,4 @@
-# --- Node backend ignores ---
 backend/node_modules/
 backend/.env
-backend/package-lock.json
-
-# --- React/Next frontend ignores ---
 frontend/node_modules/
 frontend/.env
-frontend/.next/
-frontend/build/
-frontend/dist/
-frontend/package-lock.json
-
-# --- General ignores ---
-*.log
-.DS_Store
