@@ -72,7 +72,7 @@ export const registerUser = async (req, res) => {
 
         return res.status(201).send({
             success: true,
-            message: userCreatedSuccess
+            message: "User created successfully"
         });
 
     } catch (error) {

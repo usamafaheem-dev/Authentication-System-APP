@@ -1,10 +1,11 @@
 import React from 'react'
-import Button from "../components/Button/Button.jsx"
+import Hero from '../components/Hero'
+// import Button from "../components/Button/Button.jsx"
 
 const Home = () => {
   return (
     <div>
-      <Button>Click Me</Button>
+  <Hero/>
     </div>
   )
 }

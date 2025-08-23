@@ -3,8 +3,10 @@ const app = express()
 import dotenv from "dotenv"
 import { mongoConnection } from "./database/db.js"
 import router from "./Routes/userRoutes.js"
+import cors from "cors"
 dotenv.config()
 const PORT = process.env.PORT || 3000
+app.use(cors())
     
 
 
