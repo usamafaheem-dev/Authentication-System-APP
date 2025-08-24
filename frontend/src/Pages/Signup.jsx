@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Ghost, Loader2 } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -26,10 +26,6 @@ const Signup = () => {
     email: "",
     password: "",
   });
-
-  useEffect(() => {
-    console.log(formData.username, formData.email, formData.password);
-  }, [formData.username, formData.email, formData.password]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,9 +65,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-green-100 overflow-hiddn">
-      <div className="flex flex-col items-center justify-center h-full">
-        <div className="md:w-full w-[85%] max-w-sm space-y-4">
+    <div className="w-full min-h-screen bg-green-100">
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="md:w-full w-[85%] max-w-sm space-y-4 ">
           {/* Title & Form */}
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl font-bold text-green-600 ">
@@ -83,7 +79,7 @@ const Signup = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <Card className="w-full bg-white ">
+            <Card className="w-full bg-white">
               <CardHeader className="space-y-1">
                 <CardTitle className="text-2xl text-center text-green-600">
                   Sign Up
@@ -93,7 +89,7 @@ const Signup = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-3">
                   <div className="grid gap-2">
                     <Label htmlFor="name">Full Name</Label>
                     <Input
@@ -158,9 +154,18 @@ const Signup = () => {
                       Creating account...
                     </>
                   ) : (
-                    "Sign Up"
+                    <div className="text-white">Sign Up</div>
                   )}
                 </Button>
+                <p className="text-sm text-gray-600 mt-2 text-[13px] md:text-base">
+                  If have an already account?{" "}
+                  <Link
+                    to="/signin"
+                    className="text-green-600 font-medium hover:underline"
+                  >
+                    Sign In
+                  </Link>
+                </p>
               </CardFooter>
             </Card>
           </form>

@@ -19,11 +19,16 @@ export const verifyOtpSchema = yup.object({
         .length(6, "OTP must be 6 digits")
         .required("OTP is required")
 });
+
 export const changePasswordSchema = yup.object({
-    password: yup.string().min(4, "Password must be at least 4 characters").required("Password is required"),
-    confirmPassword: yup.string()
-        .oneOf([yup.ref("password"), null], "Passwords must match")
-        .required("Confirm Password is required")
+    newPassword: yup
+        .string()
+        .min(4, "Password must be at least 4 characters")
+        .required("New Password is required"),
+    confirmPassword: yup
+        .string()
+        .min(4, "Password must be at least 4 characters")
+        .required("Confirm Password is required"),
 });
 
 
@@ -32,7 +37,7 @@ export const changePasswordSchema = yup.object({
 
 export const validateUser = (schema) => async (req, res, next) => {
     try {
-        await schema.validate(req.body, { abortEarly: false }); 
+        await schema.validate(req.body, { abortEarly: false });
         next();
     } catch (err) {
         return res.status(400).send({

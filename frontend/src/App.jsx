@@ -7,16 +7,24 @@ import VerifyEmail from "./Pages/VerifyEmail";
 import Verify from "./Pages/Verify";
 import ForgetPassword from "./Pages/ForgetPassword";
 import Navbar from "./components/Navbar";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+// import ProtectedRoutes from "./components/ProtectedRoutes";
+import VerifyOtp from "./Pages/VerifyOtp";
+import ChangePassword from "./Pages/ChangePassword";
 
 const router = createBrowserRouter([
   {
+    path: "signup",
+    element: <Signup />,
+  },
+  {
     path: "/",
     element: (
-    <ProtectedRoutes>
-         <Navbar />
+      <>
+        {/* <ProtectedRoutes> */}
+        <Navbar />
         <Home />
-    </ProtectedRoutes>
+        {/* </ProtectedRoutes> */}
+      </>
     ),
   },
   {
@@ -36,8 +44,12 @@ const router = createBrowserRouter([
     element: <ForgetPassword />,
   },
   {
-    path: "signup",
-    element: <Signup />,
+    path: "/verify-otp/:email",
+    element: <VerifyOtp />,
+  },
+  {
+    path: "/change-password/:email",
+    element: <ChangePassword />,
   },
 ]);
 
@@ -45,7 +57,6 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
-      {/* <PracticeSign/> */}
     </>
   );
 };

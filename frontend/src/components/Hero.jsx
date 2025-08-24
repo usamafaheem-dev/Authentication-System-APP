@@ -36,7 +36,7 @@ const Hero = () => {
             <div className="space-x-4 mt-4 flex flex-wrap justify-center gap-2 md:gap-0">
               {/* White Button with hover animation */}
               <Button
-                onClick={() => navigate("/create-todo")}
+                onClick={() => navigate("/")}
                 size="lg"
                 className="group h-12 px-8 bg-white text-green-700 border border-green-600 hover:bg-green-100 transition"
               >

@@ -44,7 +44,7 @@ const Verify = () => {
     <div className="relative w-full h-[100%] overflow-hidden">
       <div className="min-h-screen flex items-center justify-center px-4 bg-green-100">
         <div className="bg-white p-8 rounded-2xl shadow-lg w-[90%] max-w-md text-center">
-          <h2 className="font-semibold text-base md:text-xl text-gray-800" style={{fontFamily:"cursive"}}>{status}</h2>
+          <h2 className="font-semibold text-sm md:text-xl text-gray-800" style={{fontFamily:"cursive"}}>{status}</h2>
         </div>
       </div>
     </div>

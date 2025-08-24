@@ -37,7 +37,7 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    
 
     try {
       setIsLoading(true);
@@ -69,7 +69,7 @@ const Signin = () => {
   return (
     <div className="w-full h-screen bg-green-100 overflow-hidden">
       <div className="flex flex-col items-center justify-center h-full">
-        <div className="md:w-full w-[80%] max-w-sm space-y-6">
+        <div className="md:w-full w-[80%] max-w-sm space-y-3 md:space-y-3">
           {/* Title & Form */}
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl font-bold text-green-600 ">
@@ -82,7 +82,7 @@ const Signin = () => {
 
           <form onSubmit={handleSubmit}>
             <Card className="w-full bg-white">
-              <CardHeader className="space-y-1">
+              <CardHeader className="md:space-x-1">
                 <CardTitle className="text-2xl text-center text-green-600">
                   Sign In
                 </CardTitle>
@@ -109,7 +109,7 @@ const Signin = () => {
                       <Label htmlFor="password">Password</Label>
                       <Link
                         to="/forgot-password"
-                        className="ml-auto inline-block text-sm font-sans underline-offset-4 hover:underline"
+                        className="ml-auto font-medium tracking-tight text-[12px] text-green-600 inline-block text-sm font-sans underline-offset-4 hover:underline"
                       >
                         Forgot your password?
                       </Link>
@@ -152,9 +152,19 @@ const Signin = () => {
                       Logging account...
                     </>
                   ) : (
-                    "Sign In"
+                    <div className="text-white">Sign In</div>
                   )}
                 </Button>
+
+                <p className="text-sm text-gray-600 mt-3 text-[13px] md:text-base" >
+                  Don’t have an account?{" "}
+                  <Link
+                    to="/signup"
+                    className="text-green-600 font-medium hover:underline "
+                  >
+                    Create one
+                  </Link>
+                </p>
               </CardFooter>
             </Card>
           </form>
