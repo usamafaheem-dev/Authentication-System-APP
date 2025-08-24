@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,8 +15,10 @@ import { Eye, EyeOff, Ghost, Loader2 } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "@/Context/ContextApi";
 
 const Signin = () => {
+  const { setUser } = useContext(UserContext);
   const [password, setPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -51,7 +53,9 @@ const Signin = () => {
       if (res.data.success) {
         setFormData({ email: "", password: "" });
         toast.success(res.data.message || "Signed in successfully");
-
+        setUser(res.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.user)); // persist
+        localStorage.setItem("accessToken", res.data.accessToken);
         navigate("/");
       }
     } catch (error) {

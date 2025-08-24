@@ -7,15 +7,16 @@ import VerifyEmail from "./Pages/VerifyEmail";
 import Verify from "./Pages/Verify";
 import ForgetPassword from "./Pages/ForgetPassword";
 import Navbar from "./components/Navbar";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
-        <Navbar />
-        <Home />{" "}
-      </>
+    <ProtectedRoutes>
+         <Navbar />
+        <Home />
+    </ProtectedRoutes>
     ),
   },
   {

@@ -1,18 +1,20 @@
-import React from "react";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, User, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { UserContext } from "@/Context/ContextApi";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
   return (
     <div className="relative w-full h-screen  bg-green-50 overflow-x-hidden  md:overflow-y-hidden">
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-28">
+      <section className="w-full py-12 md:py-20 lg:py-22 xl:py-18" >
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center text-center space-y-4">
+           {user?<h1 className="text-lg font-semibold "style={{fontFamily:"cursive"}}>Welcome <span className="text-green-600">{user.username}</span></h1>:<h1 className="text-lg font-semibold "style={{fontFamily:"cursive"}}>Welcome <span className="text-green-600">Guest</span> </h1>  }
             <Badge
               variant="secondary"
               className="mb-4 text-green-800 border border-green-200"
