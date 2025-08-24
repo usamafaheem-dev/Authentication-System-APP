@@ -42,7 +42,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/user/forgetpassword",
+        "https://authentication-system-usama.vercel.app/user/forgetpassword",
         { email },
         {
           headers: {

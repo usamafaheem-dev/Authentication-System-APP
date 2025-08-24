@@ -12,7 +12,7 @@ const Verify = () => {
     const VerifyEmail = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8000/user/verify",
+          "https://authentication-system-usama.vercel.app/user/user/verify",
           {},
           {
             headers: {

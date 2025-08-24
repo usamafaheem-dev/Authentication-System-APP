@@ -44,7 +44,7 @@ const VerifyOtp = () => {
     try {
       // Simulate API call
       const res = await axios.post(
-        `http://localhost:8000/user/verify-otp/${email}`,
+        `https://authentication-system-usama.vercel.app/user/verify-otp/${email}`,
         { email, otp: finalOTP },
         {
           headers: {
@@ -185,7 +185,13 @@ const VerifyOtp = () => {
             <CardFooter className="flex justify-center">
               <p className="text-center text-gray-600 text-sm">
                 Didn't receive the code?{" "}
-                <Link to="/forgot-password" className="font-medium text-green-600 hover:underline hover:"> Go back email page</Link>
+                <Link
+                  to="/forgot-password"
+                  className="font-medium text-green-600 hover:underline hover:"
+                >
+                  {" "}
+                  Go back email page
+                </Link>
               </p>
             </CardFooter>
           </Card>

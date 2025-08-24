@@ -42,7 +42,7 @@ const Signup = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/user/register",
+        "https://authentication-system-usama.vercel.app/user/register",
         formData,
         {
           headers: {
