@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import axios from "axios";
 
 const ForgetPassword = () => {
-  const BASE_URL_ = import.meta.env.VITE_API_URL;
+  const BASE_URL = import.meta.env.VITE_BACK_URL;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
@@ -43,7 +43,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `http://localhost:8000/user/forgetpassword`,
+        `${BASE_URL}user/forgetpassword`,
         { email },
         {
           headers: {

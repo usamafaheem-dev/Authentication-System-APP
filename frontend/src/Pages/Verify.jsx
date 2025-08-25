@@ -4,7 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 const Verify = () => {
-  const BASE_URL_ = import.meta.env.VITE_API_URL;
+  const BASE_URL = import.meta.env.VITE_BACK_URL;
+  
   const { token } = useParams();
   const [status, setStatus] = useState("Verifying.....");
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Verify = () => {
     const VerifyEmail = async () => {
       try {
         const res = await axios.post(
-          `http://localhost:8000/user/user/verify`,
+          `${BASE_URL}user/verify`,
           {},
           {
             headers: {

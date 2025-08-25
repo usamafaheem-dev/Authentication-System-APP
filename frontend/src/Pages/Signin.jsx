@@ -18,7 +18,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "@/Context/ContextApi";
 
 const Signin = () => {
-  const BASE_URL_ = import.meta.env.VITE_API_UR;
+  const BASE_URL = import.meta.env.VITE_BACK_URL;
+  
+
   const { setUser } = useContext(UserContext);
   const [password, setPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,15 +43,11 @@ const Signin = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        "https://authentication-system-app1.vercel.app/user/login",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.post(`${BASE_URL}user/login`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (res.data.success) {
         setFormData({ email: "", password: "" });
         toast.success(res.data.message || "Signed in successfully");
@@ -125,11 +123,12 @@ const Signin = () => {
                         value={formData.password}
                       />
                       <Button
+                        type="button"
                         variant={Ghost}
                         size="small"
                         className="absolute top-0 right-0 px-3 py-2 h-full hover:bg-transparent"
                         onClick={() => setPassword(!password)}
-                        disabled={isLoading}
+                        // disabled={isLoading}
                       >
                         {password ? (
                           <Eye className="h-4 w-4 text-gray-600" />
