@@ -13,7 +13,7 @@ const Verify = () => {
     const VerifyEmail = async () => {
       try {
         const res = await axios.post(
-          `${BASE_URL_}/user/user/verify`,
+          `http://localhost:8000/user/user/verify`,
           {},
           {
             headers: {

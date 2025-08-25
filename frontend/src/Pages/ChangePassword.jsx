@@ -40,7 +40,7 @@ const ChangePassword = () => {
 
     try {
       const res = await axios.post(
-        `${BASE_URL_}/user/change-password/${email}`,
+        `http://localhost:8000/user/change-password/${email}`,
         {
           newPassword,
           confirmPassword,
