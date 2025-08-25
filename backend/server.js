@@ -7,13 +7,14 @@ import cors from "cors"
 dotenv.config()
 const PORT = process.env.PORT || 3000
 app.use(cors())
-    
 
 
+
+mongoConnection()
 
 app.use(express.json())
-app.use("/user",router)
+app.use("/user", router)
 app.listen(PORT, () => {
-    mongoConnection()
+
     console.log(`server is running on the port ${PORT}`)
 })
