@@ -1,17 +1,18 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./Pages/Home";
-import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
-import VerifyEmail from "./Pages/VerifyEmail";
-import Verify from "./Pages/Verify";
-import ForgetPassword from "./Pages/ForgetPassword";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 import Navbar from "./components/Navbar";
-// import ProtectedRoutes from "./components/ProtectedRoutes";
-import VerifyOtp from "./Pages/EmailVerifyOtp";
-import ChangePassword from "./Pages/ChangePassword";
+import Home from "./Pages/Home";
 import EmailVerifyOtp from "./Pages/EmailVerifyOtp";
+import Signin from "./Pages/Signin";
+import ForgetPassword from "./Pages/ForgetPassword";
 import PasswordVerifyOtp from "./Pages/ForgetPasswordOtpVerify";
+import ChangePassword from "./Pages/ChangePassword";
+
+import NotFound from "./Pages/PageNotFound";
+
+// import ProtectedRoutes from "./components/ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -22,17 +23,14 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        {/* <ProtectedRoutes> */}
-        <Navbar />
-        <Home />
-        {/* </ProtectedRoutes> */}
+        <ProtectedRoutes>
+          <Navbar />
+          <Home />
+        </ProtectedRoutes>
       </>
     ),
   },
-  {
-    path: "/verify",
-    element: <VerifyEmail />,
-  },
+
   {
     path: "/verify-otp/:email",
     element: <EmailVerifyOtp />,
@@ -52,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/change-password/:email",
     element: <ChangePassword />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
