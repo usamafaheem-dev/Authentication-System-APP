@@ -2,16 +2,16 @@ import yup from "yup"
 
 export const registerValidationSchema = yup.object({
     username: yup.string().trim().min(3, "Username must be at least 3 characters").required("Username is required"),
-    email: yup.string().email("Invalid Email").required("Email is required"),
+    email: yup.string().trim().email("Invalid Email").required("Email is required"),
     password: yup.string().min(4, "Password must be at least 4 characters").required("Password is required")
 });
 
 export const loginValidationSchema = yup.object({
-    email: yup.string().email("Invalid Email").required("Email is required"),
+    email: yup.string().trim().email("Invalid Email").required("Email is required"),
     password: yup.string().required("Password is required")
 });
 export const forgetPasswordSchema = yup.object({
-    email: yup.string().email("Invalid Email").required("Email is required")
+    email: yup.string().trim().email("Invalid Email").required("Email is required")
 });
 
 export const verifyOtpSchema = yup.object({
