@@ -45,30 +45,32 @@ export const registerUser = async (req, res) => {
 // Verify email
 export const verification = async (req, res) => {
   try {
-    const { token } = req.params; // ✅ URL parameter se token aa raha hai
+    const { token } = req.params;
 
     if (!token) {
-      return res.status(401).json({ success: false, message: "Token required" });
+      // ✅ JSON ki jagah REDIRECT
+      return res.redirect('https://authmemapp.onrender.com/signin?error=Token+required');
     }
 
     let decoded;
     try {
       decoded = jwt.verify(token, process.env.SECRET_KEY);
     } catch (error) {
-      return res.status(400).json({ 
-        success: false, 
-        message: error.name === "TokenExpiredError" ? "Token expired" : "Token invalid" 
-      });
+      // ✅ JSON ki jagah REDIRECT
+      const message = error.name === "TokenExpiredError" ? "Token+expired" : "Token+invalid";
+      return res.redirect(`https://authmemapp.onrender.com/signin?error=${message}`);
     }
 
     const user = await User.findById(decoded.id);
     if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
+      // ✅ JSON ki jagah REDIRECT
+      return res.redirect('https://authmemapp.onrender.com/signin?error=User+not+found');
     }
 
     // Check if user is already verified
     if (user.isVerified) {
-      return res.status(400).json({ success: false, message: "Email already verified" });
+      // ✅ JSON ki jagah REDIRECT
+      return res.redirect('https://authmemapp.onrender.com/signin?message=Email+already+verified');
     }
 
     user.isVerified = true;
@@ -77,19 +79,17 @@ export const verification = async (req, res) => {
 
     await verifySuccess(user.username, user.email);
 
-    res.status(200).json({ 
-      success: true, 
-      message: "Email verified successfully" 
-    });
+    // ✅ JSON ki jagah REDIRECT with success message
+    res.redirect('https://authmemapp.onrender.com/signin?message=Email+verified+successfully');
     
   } catch (error) {
     console.error("Verification error:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Server error during verification" 
-    });
+    // ✅ JSON ki jagah REDIRECT
+    res.redirect('https://authmemapp.onrender.com/signin?error=Server+error+during+verification');
   }
 };
+
+
 
 // Login
 export const login = async (req, res) => {

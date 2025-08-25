@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -14,21 +13,34 @@ import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Ghost, Loader2 } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom"; // ✅ useSearchParams add karo
 import { UserContext } from "@/Context/ContextApi";
 
 const Signin = () => {
   const BASE_URL = import.meta.env.VITE_BACK_URL;
-  
-
   const { setUser } = useContext(UserContext);
   const [password, setPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams(); // ✅ URL parameters read karne ke liye
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  // ✅ URL se messages check karo
+  useEffect(() => {
+    const message = searchParams.get('message');
+    const error = searchParams.get('error');
+    
+    if (message) {
+      toast.success(message);
+    }
+    if (error) {
+      toast.error(error);
+    }
+  }, [searchParams]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +64,7 @@ const Signin = () => {
         setFormData({ email: "", password: "" });
         toast.success(res.data.message || "Signed in successfully");
         setUser(res.data.user);
-        localStorage.setItem("user", JSON.stringify(res.data.user)); // persist
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("accessToken", res.data.accessToken);
         navigate("/");
       }
@@ -128,7 +140,6 @@ const Signin = () => {
                         size="small"
                         className="absolute top-0 right-0 px-3 py-2 h-full hover:bg-transparent"
                         onClick={() => setPassword(!password)}
-                        // disabled={isLoading}
                       >
                         {password ? (
                           <Eye className="h-4 w-4 text-gray-600" />
@@ -156,7 +167,7 @@ const Signin = () => {
                 </Button>
 
                 <p className="text-sm text-gray-600 mt-3 text-[13px] md:text-base">
-                  Don’t have an account?{" "}
+                  Don't have an account?{" "}
                   <Link
                     to="/signup"
                     className="text-green-600 font-medium hover:underline "
