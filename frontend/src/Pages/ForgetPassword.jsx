@@ -43,7 +43,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `${BASE_URL}/user/forgetpassword`,
+        `${BASE_URL}user/forgetpassword`,
         { email },
         {
           headers: {

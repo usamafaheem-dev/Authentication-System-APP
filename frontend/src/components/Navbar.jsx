@@ -23,7 +23,7 @@ const Navbar = () => {
   const logoutHandler = async () => {
     try {
       const res = await axios.post(
-        `${BASE_URL}/user/logout`,
+        `${BASE_URL}user/logout`,
         {},
         {
           headers: {

@@ -46,7 +46,7 @@ const EmailVerifyOtp = () => {
     try {
       // Simulate API call
       const res = await axios.post(
-        `${BASE_URL}/user/verify/register/otp/${email}`,
+        `${BASE_URL}user/verify/register/otp/${email}`,
         { email, otp: finalOTP },
         {
           headers: {

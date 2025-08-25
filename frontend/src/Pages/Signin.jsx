@@ -55,7 +55,7 @@ const Signin = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(`${BASE_URL}/user/login`, formData, {
+      const res = await axios.post(`${BASE_URL}user/login`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
