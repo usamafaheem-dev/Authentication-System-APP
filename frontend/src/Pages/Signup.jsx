@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const BASE_URL_ = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [password, showPassword] = useState(false);
 
@@ -41,15 +42,11 @@ const Signup = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        "https://authentication-system-usama.vercel.app/user/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.post(`${BASE_URL_}/user/register`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log("Response from server:", res.data);
       if (res.data.success) {
         setFormData({ username: "", email: "", password: "" });

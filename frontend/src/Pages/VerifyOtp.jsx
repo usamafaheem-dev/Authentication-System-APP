@@ -16,6 +16,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 const VerifyOtp = () => {
+  const BASE_URL_ = import.meta.env.VITE_API_URL;
   const [isVerified, setIsVerified] = useState(false); // Simulating a verified state for demonstration
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -44,7 +45,7 @@ const VerifyOtp = () => {
     try {
       // Simulate API call
       const res = await axios.post(
-        `https://authentication-system-usama.vercel.app/user/verify-otp/${email}`,
+        `${BASE_URL_}/user/verify-otp/${email}`,
         { email, otp: finalOTP },
         {
           headers: {

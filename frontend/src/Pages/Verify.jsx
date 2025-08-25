@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 const Verify = () => {
+  const BASE_URL_ = import.meta.env.VITE_API_URL;
   const { token } = useParams();
   const [status, setStatus] = useState("Verifying.....");
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Verify = () => {
     const VerifyEmail = async () => {
       try {
         const res = await axios.post(
-          "https://authentication-system-usama.vercel.app/user/user/verify",
+          `${BASE_URL_}/user/user/verify`,
           {},
           {
             headers: {
@@ -44,7 +45,12 @@ const Verify = () => {
     <div className="relative w-full h-[100%] overflow-hidden">
       <div className="min-h-screen flex items-center justify-center px-4 bg-green-100">
         <div className="bg-white p-8 rounded-2xl shadow-lg w-[90%] max-w-md text-center">
-          <h2 className="font-semibold text-sm md:text-xl text-gray-800" style={{fontFamily:"cursive"}}>{status}</h2>
+          <h2
+            className="font-semibold text-sm md:text-xl text-gray-800"
+            style={{ fontFamily: "cursive" }}
+          >
+            {status}
+          </h2>
         </div>
       </div>
     </div>

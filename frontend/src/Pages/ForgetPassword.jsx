@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import axios from "axios";
 
 const ForgetPassword = () => {
+  const BASE_URL_ = import.meta.env.VITE_API_URL;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        "https://authentication-system-usama.vercel.app/user/forgetpassword",
+        `${BASE_URL_}/user/forgetpassword`,
         { email },
         {
           headers: {

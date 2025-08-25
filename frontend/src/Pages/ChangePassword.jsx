@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import axios from "axios";
 
 const ChangePassword = () => {
+  const BASE_URL_ = import.meta.env.VITE_API_URL;
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ const ChangePassword = () => {
 
     try {
       const res = await axios.post(
-        `https://authentication-system-usama.vercel.app/user/change-password/${email}`,
+        `${BASE_URL_}/user/change-password/${email}`,
         {
           newPassword,
           confirmPassword,
