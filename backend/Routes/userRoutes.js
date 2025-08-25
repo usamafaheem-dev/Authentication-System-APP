@@ -9,7 +9,7 @@ import { changePasswordSchema, forgetPasswordSchema, loginValidationSchema, regi
 const router = express.Router()
 
 router.post("/register", validateUser(registerValidationSchema), registerUser)
-router.post("/verify", verification)
+router.get('/verify/:token', verification);
 router.post("/login", validateUser(loginValidationSchema), login)
 router.post("/logout", isAuthorized, logout)
 router.post("/forgetpassword", validateUser(forgetPasswordSchema), forgetPassword)

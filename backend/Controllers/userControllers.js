@@ -43,10 +43,9 @@ export const registerUser = async (req, res) => {
 };
 
 // Verify email
-// Verify email - UPDATED VERSION
 export const verification = async (req, res) => {
   try {
-    const { token } = req.params; // URL parameter se token le rahe hain
+    const { token } = req.params; // ✅ URL parameter se token aa raha hai
 
     if (!token) {
       return res.status(401).json({ success: false, message: "Token required" });
@@ -63,7 +62,14 @@ export const verification = async (req, res) => {
     }
 
     const user = await User.findById(decoded.id);
-    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    // Check if user is already verified
+    if (user.isVerified) {
+      return res.status(400).json({ success: false, message: "Email already verified" });
+    }
 
     user.isVerified = true;
     user.token = null;
@@ -71,9 +77,17 @@ export const verification = async (req, res) => {
 
     await verifySuccess(user.username, user.email);
 
-    res.status(200).json({ success: true, message: "Email verified successfully" });
+    res.status(200).json({ 
+      success: true, 
+      message: "Email verified successfully" 
+    });
+    
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error("Verification error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Server error during verification" 
+    });
   }
 };
 
