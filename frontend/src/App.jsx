@@ -8,8 +8,10 @@ import Verify from "./Pages/Verify";
 import ForgetPassword from "./Pages/ForgetPassword";
 import Navbar from "./components/Navbar";
 // import ProtectedRoutes from "./components/ProtectedRoutes";
-import VerifyOtp from "./Pages/VerifyOtp";
+import VerifyOtp from "./Pages/EmailVerifyOtp";
 import ChangePassword from "./Pages/ChangePassword";
+import EmailVerifyOtp from "./Pages/EmailVerifyOtp";
+import PasswordVerifyOtp from "./Pages/ForgetPasswordOtpVerify";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +34,8 @@ const router = createBrowserRouter([
     element: <VerifyEmail />,
   },
   {
-    path: "/verify/:token",
-    element: <Verify />,
+    path: "/verify-otp/:email",
+    element: <EmailVerifyOtp />,
   },
   {
     path: "/signin",
@@ -44,8 +46,8 @@ const router = createBrowserRouter([
     element: <ForgetPassword />,
   },
   {
-    path: "/verify-otp/:email",
-    element: <VerifyOtp />,
+    path: "/verify/password/otp/:email",
+    element: <PasswordVerifyOtp />,
   },
   {
     path: "/change-password/:email",

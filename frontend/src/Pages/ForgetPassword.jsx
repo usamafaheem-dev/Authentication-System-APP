@@ -43,7 +43,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `${BASE_URL}user/forgetpassword`,
+        `http://localhost:8000/user/forgetpassword`,
         { email },
         {
           headers: {
@@ -55,7 +55,7 @@ const ForgetPassword = () => {
         setIsSubmitted(true); // Set to true to show success state
         toast.success(res.data.message || "Password reset link sent");
         setTimeout(() => {
-          navigate(`/verify-otp/${email}`);
+          navigate(`/verify/password/otp/${email}`);
         }, 3000);
       }
     } catch (error) {

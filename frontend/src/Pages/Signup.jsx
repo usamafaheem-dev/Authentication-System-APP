@@ -17,7 +17,7 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
-   const BASE_URL = import.meta.env.VITE_BACK_URL  
+  //  const BASE_URL = import.meta.env.VITE_BACK_URL
   const navigate = useNavigate();
   const [password, showPassword] = useState(false);
 
@@ -43,7 +43,7 @@ const Signup = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `${BASE_URL}user/register`,
+        `http://localhost:8000/user/register`,
         formData,
         {
           headers: {
@@ -55,7 +55,7 @@ const Signup = () => {
       if (res.data.success) {
         setFormData({ username: "", email: "", password: "" });
         toast.success(res.data.message || "Account created successfully");
-        navigate("/verify");
+        navigate(`/verify-otp/${formData.email}`);
       }
     } catch (error) {
       console.log("Error response from server:", error.response?.data);
@@ -128,6 +128,7 @@ const Signup = () => {
                         value={formData.password}
                       />
                       <Button
+                        type="button"
                         variant={Ghost}
                         size="small"
                         className="absolute top-0 right-0 px-3 py-2 h-full hover:bg-transparent"

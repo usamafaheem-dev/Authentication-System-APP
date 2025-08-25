@@ -15,7 +15,7 @@ import axios from "axios";
 import { toast } from "sonner";
 
 const Navbar = () => {
-    const BASE_URL = import.meta.env.VITE_BACK_URL;
+    // const BASE_URL = import.meta.env.VITE_BACK_URL;
   const { user, setUser } = useContext(UserContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const accessToken = localStorage.getItem("accessToken");
@@ -23,7 +23,7 @@ const Navbar = () => {
   const logoutHandler = async () => {
     try {
       const res = await axios.post(
-        `${BASE_URL}user/logout`,
+        `http://localhost:8000/user/logout`,
         {},
         {
           headers: {

@@ -9,10 +9,10 @@ const __fileName = fileURLToPath(import.meta.url);
 const __dirName = path.dirname(__fileName);
 
 // Send verification email
-export const emailverify = async (token, email) => {
+export const emailverify = async (email, otp) => {
     const tempSource = fs.readFileSync(path.join(__dirName, "template.hbs"), "utf-8");
     const template = handlebars.compile(tempSource);
-    const htmlToSend = template({ token });
+    const htmlToSend = template({ email, otp });
 
     const transporter = nodemailer.createTransport({
         service: "gmail",

@@ -15,8 +15,8 @@ import React, { useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
-const VerifyOtp = () => {
-  const BASE_URL = import.meta.env.VITE_BACK_URL;
+const PasswordVerifyOtp = () => {
+  // const BASE_URL = import.meta.env.VITE_BACK_URL;
 
   const [isVerified, setIsVerified] = useState(false); // Simulating a verified state for demonstration
   const [error, setError] = useState("");
@@ -46,7 +46,7 @@ const VerifyOtp = () => {
     try {
       // Simulate API call
       const res = await axios.post(
-        `${BASE_URL}user/verify-otp/${email}`,
+        `http://localhost:8000/user/verify/forgetpassword/otp/${email}`,
         { email, otp: finalOTP },
         {
           headers: {
@@ -203,4 +203,4 @@ const VerifyOtp = () => {
   );
 };
 
-export default VerifyOtp;
+export default PasswordVerifyOtp;
