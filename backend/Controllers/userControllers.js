@@ -43,34 +43,38 @@ export const registerUser = async (req, res) => {
 };
 
 // Verify email
+// Verify email - UPDATED VERSION
 export const verification = async (req, res) => {
-    try {
-        const authHeader = req.headers.authorization;
-        if (!authHeader || !authHeader.startsWith("Bearer")) {
-            return res.status(401).json({ success: false, message: "Invalid authorization" });
-        }
+  try {
+    const { token } = req.params; // URL parameter se token le rahe hain
 
-        const token = authHeader.split(" ")[1];
-        let decoded;
-        try {
-            decoded = jwt.verify(token, process.env.SECRET_KEY);
-        } catch (error) {
-            return res.status(400).json({ success: false, message: error.name === "TokenExpiredError" ? "Token expired" : "Token invalid" });
-        }
-
-        const user = await User.findById(decoded.id);
-        if (!user) return res.status(404).json({ success: false, message: "User not found" });
-
-        user.isVerified = true;
-        user.token = null;
-        await user.save();
-
-        await verifySuccess(user.username, user.email);
-
-        res.status(200).json({ success: true, message: "Email verified successfully" });
-    } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+    if (!token) {
+      return res.status(401).json({ success: false, message: "Token required" });
     }
+
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.SECRET_KEY);
+    } catch (error) {
+      return res.status(400).json({ 
+        success: false, 
+        message: error.name === "TokenExpiredError" ? "Token expired" : "Token invalid" 
+      });
+    }
+
+    const user = await User.findById(decoded.id);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    user.isVerified = true;
+    user.token = null;
+    await user.save();
+
+    await verifySuccess(user.username, user.email);
+
+    res.status(200).json({ success: true, message: "Email verified successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 // Login
