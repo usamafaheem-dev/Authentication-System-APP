@@ -8,20 +8,13 @@ A full-featured, secure, and modern user authentication system built with the ME
 
 ## ✨ Screenshots
 
-| Register Account |   **OTP Verification** |  Login Page | Forgot Password   |
+| Register Account | OTP Verification | Login Page | Forgot Password |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/6de1cd0f-d053-40a0-8f77-7f5566801a8c" width="400" /> |
-|<img src="https://github.com/user-attachments/assets/4ade9bb7-94f1-4940-89ee-3808cf205ac8" width="400" /> |
-| <img src="https://github.com/user-attachments/assets/ba3af67f-8734-4997-bcf2-f2ca7b85f3b5" width="400" /> | 
-|  <img src="https://github.com/user-attachments/assets/288d1e02-b0ac-4|dd2-802d-d1e66e635070" width="400" /> |
+| <img src="https://github.com/user-attachments/assets/6de1cd0f-d053-40a0-8f77-7f5566801a8c" width="400" /> | <img src="https://github.com/user-attachments/assets/4ade9bb7-94f1-4940-89ee-3808cf205ac8" width="400" /> | <img src="https://github.com/user-attachments/assets/ba3af67f-8734-4997-bcf2-f2ca7b85f3b5" width="400" /> | <img src="https://github.com/user-attachments/assets/288d1e02-b0ac-4dd2-802d-d1e66e635070" width="400" /> |
 
-
-
-|**Dashboard** | **Email Sent** | **Reset Password** | **Profile Page** |
-|<img src="https://github.com/user-attachments/assets/da260152-007b-47c5-afa5-578be6cf3957" width="400" /> |
-|  <img src="https://github.com/user-attachments/assets/c122cacc-8248-4764-9659-031efd20e737" width="400" />  |
- | <img src="https://github.com/user-attachments/assets/9906aa8f-2a0c-42e6-93e7-5a6dc161c411" width="400" /> | 
- |    <img src="https://github.com/user-attachments/assets/7b77fb55-4e51-43e1-83a0-562458baf07a" width="400" /> |
+| Dashboard | Email Sent | Reset Password | Profile Page |
+| :---: | :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/da260152-007b-47c5-afa5-578be6cf3957" width="400" /> | <img src="https://github.com/user-attachments/assets/c122cacc-8248-4764-9659-031efd20e737" width="400" /> | <img src="https://github.com/user-attachments/assets/9906aa8f-2a0c-42e6-93e7-5a6dc161c411" width="400" /> | <img src="https://github.com/user-attachments/assets/7b77fb55-4e51-43e1-83a0-562458baf07a" width="400" /> |
 
 ---
 
@@ -115,83 +108,3 @@ To run this project locally, follow these steps:
 ---
 
 ## 📁 Project Structure
-Authentication-System-APP/
-├── backend/
-│ ├── config/
-│ │ └── database.js # Database connection setup
-│ ├── controllers/
-│ │ └── userController.js # Logic for all user operations (login, register, OTP, reset password)
-│ ├── middleware/
-│ │ └── authMiddleware.js # JWT verification middleware
-│ ├── models/
-│ │ └── User.js # Mongoose User Schema
-│ ├── routes/
-│ │ └── userRoutes.js # All authentication routes
-│ ├── .env
-│ ├── package.json
-│ └── server.js # Main server entry point
-│
-└── frontend/
-├── public/
-├── src/
-│ ├── components/ # Reusable components (often using Shadcn)
-│ ├── pages/ # Main pages (Login, Register, Verify OTP, Dashboard, Forgot Password, etc.)
-│ ├── App.js
-│ ├── App.css
-│ └── index.js
-├── package.json
-└── ...
-
-
----
-
-## 🔐 How Authentication Works
-
-1.  **Registration with OTP:**
-    - User fills out the registration form.
-    - Backend hashes the password and creates a user with an `isVerified: false` flag.
-    - An OTP is generated, stored in the database (or temporarily in memory), and sent to the user's email via Nodemailer.
-    - User must enter the correct OTP on the verification page to activate their account.
-
-2.  **Login:**
-    - Only verified users (`isVerified: true`) can log in.
-    - The backend verifies the password against the hash and generates a JWT upon success.
-
-3.  **Forgot Password:**
-    - User enters their registered email on the "Forgot Password" page.
-    - An OTP is sent to that email.
-    - User enters the OTP and is allowed to set a new password upon successful verification.
-
-4.  **Accessing Protected Routes:**
-    - The frontend attaches the JWT to the header of requests to protected routes.
-    - The backend's `authMiddleware` verifies the token before granting access to the endpoint.
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/usamafaheem-dev/Authentication-System-APP/issues).
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
-## 👨‍💻 Developer
-
-**Usama Faheem**
-
-- GitHub: [@usamafaheem-dev](https://github.com/usamafaheem-dev)
-- LinkedIn: [Usama Faheem](https://www.linkedin.com/in/usama-faheem/)
-- Portfolio: [Usama Faheem - Portfolio](https://usama-faheem-portfolio.netlify.app/)
-
-**If you found this project helpful, please give it a ⭐!**
