@@ -1,163 +1,188 @@
-🔐 Authentication System (MERN Stack)
-A full-featured, secure, and modern user authentication system built with the MERN stack (MongoDB, Express.js, React, Node.js). This application provides a seamless user experience for registration, login, and profile management with robust security measures.
+# 🔐 Advanced MERN Stack Authentication System
 
-https://img.shields.io/badge/MERN-Full%2520Stack-green?style=for-the-badge
-https://img.shields.io/badge/JWT-Authentication-orange?style=for-the-badge&logo=jsonwebtokens
+A full-featured, secure, and modern user authentication system built with the MERN stack. This application goes beyond basic login/logout, featuring email verification, password recovery via OTP, and a beautiful, accessible UI built with modern components.
 
-✨ Features
-User Registration & Login: Secure sign-up and sign-in with form validation.
+**Live Demo: [https://authmernapp.onrender.com/](https://authmernapp.onrender.com/)**
 
-JWT Authentication: Stateless user sessions using JSON Web Tokens for enhanced security.
+---
 
-Password Hashing: User passwords are encrypted using bcryptjs before storing in the database.
+## ✨ Screenshots
 
-Protected Routes: Certain routes within the React app are protected and require a valid token for access.
+| Register with OTP | Login Page | Forgot Password | Dashboard |
+| :---: | :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/da260152-007b-47c5-afa5-578be6cf3957" width="400" /> | <img src="https://github.com/user-attachments/assets/c122cacc-8248-4764-9659-031efd20e737" width="400" /> | <img src="https://github.com/user-attachments/assets/ba3af67f-8734-4997-bcf2-f2ca7b85f3b5" width="400" /> | <img src="https://github.com/user-attachments/assets/7b77fb55-4e51-43e1-83a0-562458baf07a" width="400" /> |
+| **OTP Verification** | **Email Sent** | **Reset Password** | **Profile Page** |
+| <img src="https://github.com/user-attachments/assets/288d1e02-b0ac-4dd2-802d-d1e66e635070" width="400" /> | <img src="https://github.com/user-attachments/assets/9906aa8f-2a0c-42e6-93e7-5a6dc161c411" width="400" /> | <img src="https://github.com/user-attachments/assets/4ade9bb7-94f1-4940-89ee-3808cf205ac8" width="400" /> | <img src="https://github.com/user-attachments/assets/6de1cd0f-d053-40a0-8f77-7f5566801a8c" width="400" /> |
 
-User Profile Dashboard: A personalized dashboard users see after successful login.
+---
 
-Logout Functionality: Secure logout that clears the user token.
+## 🚀 Advanced Features
 
-Responsive Design: The frontend is built to be responsive and user-friendly on various devices.
+- **User Registration with OTP Verification**: New users must verify their email via a One-Time Password (OTP) sent via Nodemailer before they can log in.
+- **Secure JWT Authentication**: Stateless user sessions using JSON Web Tokens.
+- **Forgot Password Flow**: Users can reset their password by requesting an OTP on their registered email.
+- **Password Hashing**: Uses `bcryptjs` to securely store passwords.
+- **Protected Routes**: Access to the dashboard and profile is only granted after successful login.
+- **Responsive & Modern UI**: Built with a combination of **Shadcn** components and custom CSS for a sleek, accessible experience.
+- **User Profile Management**: Users can view and manage their profile information.
 
-🛠️ Tech Stack
-This project is built with a powerful combination of technologies:
+---
 
-Frontend:
-React - A JavaScript library for building user interfaces.
+## 🛠️ Tech Stack
 
-React Router DOM - For handling navigation and routing between components.
+### **Frontend:**
+- **React** - A JavaScript library for building user interfaces.
+- **React Router DOM** - For handling navigation between pages.
+- **Axios** - For making HTTP requests to the backend API.
+- **Shadcn/UI** - A beautifully designed component library for building modern interfaces.
+- **CSS3** - For custom styling and layout.
 
-Axios - A promise-based HTTP client for making API requests to the backend.
+### **Backend:**
+- **Node.js** - JavaScript runtime for the server.
+- **Express.js** - Web framework for building RESTful APIs.
+- **MongoDB with Mongoose** - Database and ODM for data storage and modeling.
+- **JWT (jsonwebtoken)** - For generating and verifying authentication tokens.
+- **Bcryptjs** - For hashing and comparing passwords.
+- **Nodemailer** - For sending OTP emails for verification and password reset.
+- **OTP Generator** - For generating secure One-Time Passwords.
 
-CSS3 - For styling the components.
+---
 
-Backend:
-Node.js - A JavaScript runtime environment for the server.
+## 📦 Installation & Setup
 
-Express.js - A web application framework for Node.js to build RESTful APIs.
+To run this project locally, follow these steps:
 
-MongoDB - A NoSQL database for storing user data.
+### Prerequisites
+- Node.js and npm installed on your machine.
+- A MongoDB Atlas account or a local MongoDB installation.
+- A Gmail account (or another email service) to configure Nodemailer.
 
-Mongoose - An ODM (Object Data Modeling) library for MongoDB and Node.js.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/usamafaheem-dev/Authentication-System-APP.git
+    cd Authentication-System-APP
+    ```
 
-JSON Web Token (JWT) - For creating access tokens that authenticate users.
+2.  **Setup Backend:**
+    ```bash
+    # Navigate to the backend directory
+    cd backend
 
-bcryptjs - For hashing passwords to keep them secure.
+    # Install dependencies
+    npm install
 
-CORS - Middleware to enable Cross-Origin Resource Sharing.
+    # Create a .env file and add your environment variables
+    touch .env
+    ```
+    Add the following to your `.env` file:
+    ```env
+    PORT=5000
+    MONGO_URI=your_mongodb_connection_string_here
+    JWT_SECRET=your_super_strong_jwt_secret_here
+    EMAIL_USER=your_email@gmail.com
+    EMAIL_PASS=your_app_specific_password
+    ```
+    *For `EMAIL_PASS`, if using Gmail, you need to generate an [App Password](https://myaccount.google.com/apppasswords).*
 
-📦 Installation & Setup
-Follow these steps to set up the project locally on your machine.
+    ```bash
+    # Start the backend server
+    npm start
+    ```
+    The server will run on `http://localhost:5000`.
 
-Prerequisites
-Node.js (v14 or higher)
+3.  **Setup Frontend:**
+    ```bash
+    # Open a new terminal and navigate to the frontend directory
+    cd frontend
 
-npm or yarn
+    # Install dependencies
+    npm install
 
-MongoDB Atlas account or a local MongoDB installation
+    # Start the React development server
+    npm start
+    ```
+    The client will run on `http://localhost:3000`.
 
-1. Clone the Repository
-bash
-git clone https://github.com/usamafaheem-dev/Authentication-System-APP.git
-cd Authentication-System-APP
-2. Backend Setup
-bash
-# Navigate to the backend directory
-cd backend
+---
 
-# Install all dependencies
-npm install
-
-# Create a .env file in the backend directory and add your environment variables
-touch .env
-Add the following to your .env file:
-
-env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string_here
-JWT_SECRET=your_super_secret_jwt_key_here
-Replace your_mongodb_connection_string_here with your MongoDB URI and choose a strong JWT_SECRET.
-
-3. Frontend Setup
-bash
-# Navigate to the frontend directory (from the root)
-cd frontend
-
-# Install all dependencies
-npm install
-4. Running the Application
-Start the Backend Server:
-
-bash
-cd backend
-npm start
-# Server runs on http://localhost:5000
-Start the Frontend Development Server:
-
-bash
-cd frontend
-npm start
-# Client runs on http://localhost:3000
-Open http://localhost:3000 in your browser to use the application.
-
-🚀 Usage
-Register: Navigate to the sign-up page and create a new account.
-
-Login: Use your credentials on the login page.
-
-Access Dashboard: Upon successful login, you will be redirected to your protected profile dashboard.
-
-Logout: Click the logout button to securely end your session.
-
-📁 Project Structure
-text
+## 📁 Project Structure
 Authentication-System-APP/
 ├── backend/
-│   ├── config/
-│   │   └── database.js     # MongoDB connection setup
-│   ├── controllers/
-│   │   └── userController.js # Logic for login, register, profile
-│   ├── middleware/
-│   │   └── authMiddleware.js # JWT verification middleware
-│   ├── models/
-│   │   └── User.js          # Mongoose User schema
-│   ├── routes/
-│   │   └── userRoutes.js    # API routes for user actions
-│   ├── .env
-│   ├── package.json
-│   └── server.js           # Main server entry point
+│ ├── config/
+│ │ └── database.js # Database connection setup
+│ ├── controllers/
+│ │ └── userController.js # Logic for all user operations (login, register, OTP, reset password)
+│ ├── middleware/
+│ │ └── authMiddleware.js # JWT verification middleware
+│ ├── models/
+│ │ └── User.js # Mongoose User Schema
+│ ├── routes/
+│ │ └── userRoutes.js # All authentication routes
+│ ├── .env
+│ ├── package.json
+│ └── server.js # Main server entry point
 │
 └── frontend/
-    ├── public/
-    ├── src/
-    │   ├── components/     # Reusable React components
-    │   ├── pages/         # Main pages (Login, Register, Dashboard)
-    │   ├── App.js
-    │   ├── App.css
-    │   └── index.js
-    ├── package.json
-    └── ...
-🔒 Security Highlights
-Passwords are hashed using bcryptjs (salt rounds: 12).
+├── public/
+├── src/
+│ ├── components/ # Reusable components (often using Shadcn)
+│ ├── pages/ # Main pages (Login, Register, Verify OTP, Dashboard, Forgot Password, etc.)
+│ ├── App.js
+│ ├── App.css
+│ └── index.js
+├── package.json
+└── ...
 
-JWT tokens are used to maintain secure, stateless user sessions.
 
-Protected API endpoints and frontend routes verify the token's validity.
+---
 
-Sensitive configuration keys (like JWT_SECRET and MONGO_URI) are stored in environment variables.
+## 🔐 How Authentication Works
 
-🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+1.  **Registration with OTP:**
+    - User fills out the registration form.
+    - Backend hashes the password and creates a user with an `isVerified: false` flag.
+    - An OTP is generated, stored in the database (or temporarily in memory), and sent to the user's email via Nodemailer.
+    - User must enter the correct OTP on the verification page to activate their account.
 
-📄 License
-This project is open source and available under the MIT License.
+2.  **Login:**
+    - Only verified users (`isVerified: true`) can log in.
+    - The backend verifies the password against the hash and generates a JWT upon success.
 
-👨‍💻 Developer
-Usama Faheem
+3.  **Forgot Password:**
+    - User enters their registered email on the "Forgot Password" page.
+    - An OTP is sent to that email.
+    - User enters the OTP and is allowed to set a new password upon successful verification.
 
-GitHub: @usamafaheem-dev
+4.  **Accessing Protected Routes:**
+    - The frontend attaches the JWT to the header of requests to protected routes.
+    - The backend's `authMiddleware` verifies the token before granting access to the endpoint.
 
-LinkedIn: [Your LinkedIn Profile Link] (Optional: Add if you have one)
+---
 
-⭐ Don't forget to star this repo if you found it helpful!
+## 🤝 Contributing
 
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/usamafaheem-dev/Authentication-System-APP/issues).
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## 👨‍💻 Developer
+
+**Usama Faheem**
+
+- GitHub: [@usamafaheem-dev](https://github.com/usamafaheem-dev)
+- LinkedIn: [Usama Faheem](https://www.linkedin.com/in/usama-faheem/)
+- Portfolio: [Usama Faheem - Portfolio](https://usama-faheem-portfolio.netlify.app/)
+
+**If you found this project helpful, please give it a ⭐!**
