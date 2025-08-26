@@ -11,12 +11,11 @@ A full-featured, secure, and modern user authentication system built with the ME
 
 | Register Account | OTP Verification | Login Page | Forgot Password |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/6de1cd0f-d053-40a0-8f77-7f5566801a8c" width="400" /> | <img src="https://github.com/user-attachments/assets/8871542a-cdbd-4082-9e09-7e71b77477ee" width="400" /> | <img src="https://github.com/user-attachments/assets/ba3af67f-8734-4997-bcf2-f2ca7b85f3b5" width="400" /> | <img src="https://github.com/user-attachments/assets/288d1e02-b0ac-4dd2-802d-d1e66e635070" width="400" /> |
+| <img src="https://github.com/user-attachments/assets/6de1cd0f-d053-40a0-8f77-7f5566801a8c" width="400" /> | <img src="https://github.com/user-attachments/assets/9906aa8f-2a0c-42e6-93e7-5a6dc161c411" width="400" /> | <img src="https://github.com/user-attachments/assets/4ade9bb7-94f1-4940-89ee-3808cf205ac8" width="400" /> | <img src="https://github.com/user-attachments/assets/288d1e02-b0ac-4dd2-802d-d1e66e635070" width="400" /> |
 
 | Dashboard | Email Sent | Reset Password | Profile Page |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/da260152-007b-47c5-afa5-578be6cf3957" width="400" /> | <img src="https://github.com/user-attachments/assets/4ade9bb7-94f1-4940-89ee-3808cf205ac8" width="400" /> | <img src="https://github.com/user-attachments/assets/9906aa8f-2a0c-42e6-93e7-5a6dc161c411" width="400" /> | <img src="https://github.com/user-attachments/assets/7b77fb55-4e51-43e1-83a0-562458baf07a" width="400" /> |
-
+| <img src="https://github.com/user-attachments/assets/da260152-007b-47c5-afa5-578be6cf3957" width="400" /> | <img src="https://github.com/user-attachments/assets/ba3af67f-8734-4997-bcf2-f2ca7b85f3b5" width="400" /> | <img src="https://github.com/user-attachments/assets/8871542a-cdbd-4082-9e09-7e71b77477ee" width="400" /> | <img src="https://github.com/user-attachments/assets/7b77fb55-4e51-43e1-83a0-562458baf07a" width="400" /> |
  --
  
 ## 🚀 Advanced Features
